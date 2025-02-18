@@ -64,5 +64,6 @@ function getGameState() {
 function gameWon() {
     gameOver = true;
     let winner = round % 2 === 0 ? "X" : "O";
-    console.log(winner + " Wins!");
+    let a = document.querySelector("p");
+    a.innerHTML = winner + " Wins!";
 }
