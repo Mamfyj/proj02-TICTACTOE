@@ -30,16 +30,16 @@ p{
     border-radius: .5rem;
     border: solid;
     border-width: .15rem;
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Horizontally center .x */
-    align-items: center; /* Vertically center .x */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 .x{
     fill: rgb(203, 0, 98);
     width: 8rem;
     height: 8rem;
-    display: flex; /* If there's content inside, make sure flexbox is applied to .x too */
+    display: flex; 
     justify-content: center;
     align-items: center;
 }
@@ -48,7 +48,7 @@ p{
     fill: rgb(0, 80, 201);
     width: 8rem;
     height: 8rem;
-    display: flex; /* If there's content inside, make sure flexbox is applied to .x too */
+    display: flex; 
     justify-content: center;
     align-items: center;
 }
