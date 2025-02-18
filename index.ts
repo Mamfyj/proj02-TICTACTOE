@@ -1,6 +1,7 @@
 const board = document.querySelector("#board")
 let round: number = 1
 let gameOver: boolean = false
+let oldestMove: number = 1;
 
 function createBoard(){
     round = 1
@@ -11,7 +12,6 @@ function createBoard(){
         square.classList.add('square')
         square.setAttribute('square-id', String(i));
         square.addEventListener("click", onClick)
-        //i%2==0?square.innerHTML = iconO:square.innerHTML = iconX
         
         board?.append(square)
     }
@@ -26,12 +26,24 @@ function onClick(e: MouseEvent){
 
     const target = e.target as HTMLElement;
     if (target === e.currentTarget && target.getAttribute('square-id') && !target.innerHTML){
-        console.log("I've been clicked." + target.getAttribute('square-id'))
         target.innerHTML = round % 2 == 0 ? iconO : iconX;
+        target.setAttribute('place-turn', String(round))
         round++
+        
+        if (round >= 8) {
+            
+            allSquares.forEach(square => {
+                if (square.getAttribute('place-turn') === String(oldestMove)) {
+                    square.innerHTML = "";
+                }
+            });
+            oldestMove++;
+        }
+
         getGameState()
     }
 }
+
 
 function getGameState(){
     //translate game state into an readable array

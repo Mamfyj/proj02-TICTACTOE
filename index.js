@@ -2,6 +2,7 @@
 const board = document.querySelector("#board");
 let round = 1;
 let gameOver = false;
+let oldestMove = 1;
 function createBoard() {
     round = 1;
     let i = 0;
@@ -11,7 +12,6 @@ function createBoard() {
         square.classList.add('square');
         square.setAttribute('square-id', String(i));
         square.addEventListener("click", onClick);
-        //i%2==0?square.innerHTML = iconO:square.innerHTML = iconX
         board === null || board === void 0 ? void 0 : board.append(square);
     }
 }
@@ -22,9 +22,17 @@ function onClick(e) {
         return;
     const target = e.target;
     if (target === e.currentTarget && target.getAttribute('square-id') && !target.innerHTML) {
-        console.log("I've been clicked." + target.getAttribute('square-id'));
         target.innerHTML = round % 2 == 0 ? iconO : iconX;
+        target.setAttribute('place-turn', String(round));
         round++;
+        if (round >= 8) {
+            allSquares.forEach(square => {
+                if (square.getAttribute('place-turn') === String(oldestMove)) {
+                    square.innerHTML = "";
+                }
+            });
+            oldestMove++;
+        }
         getGameState();
     }
 }
