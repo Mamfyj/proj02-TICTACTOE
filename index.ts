@@ -4,7 +4,6 @@ let gameOver: boolean = false
 let oldestMove: number = 1;
 
 function createBoard(){
-    round = 1
     let i:number = 0
     for(i; i<9; i++){
         console.log(i)
