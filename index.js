@@ -72,5 +72,6 @@ function gameWon() {
     gameOver = true;
     let winner = round % 2 === 0 ? "X" : "O";
     let a = document.querySelector("p");
-    a.innerHTML = winner + " Wins!";
+    a.innerHTML = winner + " Wins!" + "</br><a href='index.html'>Play again?</a>";
+    a.style.color = round % 2 === 0 ? "red" : "blue";
 }
